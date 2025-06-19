@@ -14,8 +14,21 @@ def index():
 
 @app.route("/whiskeyRecommend", methods=["GET", "POST"])
 def whiskeyRecommend():
+    #let's get the form input
     whiskey = request.form.get("whiskey_name")
-    results_json = {
-        "recommendations": ["Mock Whisky A", "Mock Whisky B", "Mock Whisky C"]
-    }
+
+    #converting the data to json
+    input_data = json.dumps({"whiskey_name": whiskey})
+
+    #url to send the data to our model
+    url = "/api"
+
+    #now we do our post to the url
+    headers = {'Content-Type': 'application/json'}
+    response = requests.post(url, data=input_data, headers=headers)
+
+    results_json = response.json() #parsing the json response
+    print("Response JSON from backend")
+    print(results_json)
+
     return render_template("index.html", results=results_json)
