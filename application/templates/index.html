@@ -3,12 +3,51 @@
 <head>
   <meta charset="UTF-8" />
   <title>Whiskey Recommender</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      text-align: left;
+    }
+    h1 {
+      font-size: 1.6rem;
+      color: #c5843f;
+    }
+    h2 {
+      font-size: 1.4rem;
+      color: #c5843f;
+    }
+    img {
+      max-width: 300px;
+      height: auto;
+      margin-bottom: 30px;
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 80%;
+      max-width: 400px;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+    .recommendations {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+    .recommendations li {
+      margin: 10px 0;
+    }
+  </style>
 </head>
 <body>
   <h1>Whiskey Recommender</h1>
 
   <form method="POST" action="/whiskeyRecommend">
-    <input type="text" name="whiskey_name" placeholder="Enter whiskey name" required />
+    <input type="text" name="whiskey_name" placeholder="Enter a whisky you like" required />
     <input type="submit" value="Get Recommendations" />
   </form>
 
