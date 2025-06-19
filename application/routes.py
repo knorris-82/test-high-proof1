@@ -21,7 +21,7 @@ def whiskeyRecommend():
     input_data = json.dumps({"whiskey_name": whiskey})
 
     #url to send the data to our model
-    url = "/api"
+    url = "https://test-high-proof1-307fba3a69d9.herokuapp.com/api"
 
     #now we do our post to the url
     headers = {'Content-Type': 'application/json'}
