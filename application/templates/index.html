@@ -58,7 +58,7 @@
 
   <form method="POST" action="/whiskeyRecommend">
     <input type="text" name="whiskey_name" placeholder="Enter a whisky you like" required />
-    <input type="submit" value="Get Recommendations" />
+    <input type="submit" value="Get Results!" />
   </form>
 
   {% if results %}
@@ -74,5 +74,9 @@
       <p>{{ results.message or "No recommendations available." }}</p>
     {% endif %}
   {% endif %}
+  <hr>
+  <p>
+    HighProof is a whiskey recomendation app developed by Casked Coders at Carnegie Mellon Univeristy for 95829 - Software Design for Data Scientists | Spring 2025
+  </p>
 </body>
 </html>
