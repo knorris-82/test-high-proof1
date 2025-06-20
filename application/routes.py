@@ -1,12 +1,8 @@
 from application import app
-from flask import render_template, request, json, jsonify
-from sklearn import preprocessing
-from sklearn.preprocessing import OneHotEncoder
-import requests
-import numpy
+from flask import render_template, request
 import pandas as pd
+import numpy as np
 
-#decorator that will access the app
 @app.route("/")
 @app.route("/index")
 def index():
@@ -14,21 +10,27 @@ def index():
 
 @app.route("/whiskeyRecommend", methods=["GET", "POST"])
 def whiskeyRecommend():
-    #let's get the form input
     whiskey = request.form.get("whiskey_name")
 
-    #converting the data to json
-    input_data = json.dumps({"whiskey_name": whiskey})
+    # Call local function to get recommendations
+    results = get_recommendations(whiskey)
 
-    #url to send the data to our model
-    url = "https://test-high-proof1-307fba3a69d9.herokuapp.com/api"
+    return render_template("index.html", results=results)
 
-    #now we do our post to the url
-    headers = {'Content-Type': 'application/json'}
-    response = requests.post(url, data=input_data, headers=headers)
+def get_recommendations(whiskey_name):
+    """
+    Replace this dummy function with your actual recommendation logic.
+    For now, it returns 3 placeholder recommendations.
+    """
+    # Example: match string, use dataset, or ML model (as you see fit)
+    if not whiskey_name:
+        return {"recommendations": ["Please enter a whiskey name."]}
 
-    results_json = response.json() #parsing the json response
-    print("Response JSON from backend")
-    print(results_json)
-
-    return render_template("index.html", results=results_json)
+    # Dummy logic
+    return {
+        "recommendations": [
+            f"{whiskey_name} Reserve",
+            f"{whiskey_name} Select",
+            f"{whiskey_name} Barrel Strength"
+        ]
+    }
